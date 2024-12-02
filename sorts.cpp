@@ -166,7 +166,7 @@ void testShaker() {
 
     vector<int> arr4 = {};
     cocktailShakerSort(arr4);
-    assert(arr1 == vector<int>({}));
+    assert(arr4 == vector<int>({}));
 
     vector<int> arr5 = {3, 3, 3};
     cocktailShakerSort(arr5);
@@ -195,7 +195,7 @@ void testTree() {
     
     vector<int> arr4 = {};
     treeSort(arr4);
-    assert(arr1 == vector<int>({}));
+    assert(arr4 == vector<int>({}));
 
     vector<int> arr5 = {3, 3, 3};
     treeSort(arr5);
@@ -226,7 +226,7 @@ void testTimSort() {
 
     vector<int> arr5 = {3, 3, 3};
     timSort(arr5);
-    assert(arr5 == vector<int>({1, 2, 3, 4, 5}));
+    assert(arr5 == vector<int>({3, 3, 3}));
 
     vector<int> arr6 = {-1, -3, -2, -4, -5};
     timSort(arr6);
@@ -310,7 +310,9 @@ int main() {
     const int num_runs = 50;
     
     // Для массива размером 10^4
-    
+    ofstream outFile110000("1 times_10000.txt");
+    ofstream outFile210000("2 times_10000.txt");
+    ofstream outFile310000("3 times_10000.txt");
     for (int run = 0; run < num_runs; run++) {
         vector<int> arr(10000);
         for (int i = 0; i < 10000; ++i) {
@@ -321,39 +323,45 @@ int main() {
         vector<int> arr3 = arr;
         
         //CocktailSort
-        ofstream outFile110000("1 times_10000.txt");
+        
         auto start1 = chrono::high_resolution_clock::now();
         cocktailShakerSort(arr1);
         auto end1 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration1 = end1 - start1;
         outFile110000 << duration1.count() << endl;
-        outFile110000.close();
+        
         
         //TreeSort
-        ofstream outFile210000("2 times_10000.txt");
+        
         auto start2 = chrono::high_resolution_clock::now();
         treeSort(arr2);
         auto end2 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration2 = end2 - start2;
         outFile210000 << duration2.count() << endl;
-        outFile210000.close();
+        
         
         //TimSort
-        ofstream outFile310000("3 times_10000.txt");
+        
         auto start3 = chrono::high_resolution_clock::now();
         timSort(arr3);
         auto end3 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration3 = end3 - start3;
         outFile310000 << duration3.count() << endl;
-        outFile310000.close();
+        
         
     }
+    outFile110000.close();
+    outFile210000.close();
+    outFile310000.close();
     
     
     // Для массива размером 10^5
+    ofstream outFile1100000("1 times_100000.txt");
+    ofstream outFile2100000("2 times_100000.txt");
+    ofstream outFile3100000("3 times_100000.txt");
     for (int run = 0; run < num_runs; run++) {
         vector<int> arr(100000);
         for (int i = 0; i < 100000; ++i) {
@@ -364,36 +372,39 @@ int main() {
         vector<int> arr3 = arr;
         
         //CocktailSort
-        ofstream outFile1100000("1 times_100000.txt");
+        
         auto start1 = chrono::high_resolution_clock::now();
         cocktailShakerSort(arr1);
         auto end1 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration1 = end1 - start1;
         outFile1100000 << duration1.count() << endl;
-        outFile1100000.close();
+        
         
         //TreeSort
-        ofstream outFile2100000("2 times_100000.txt");
+        
         auto start2 = chrono::high_resolution_clock::now();
         treeSort(arr2);
         auto end2 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration2 = end2 - start2;
         outFile2100000 << duration2.count() << endl;
-        outFile2100000.close();
+        
         
         //TimSort
-        ofstream outFile3100000("3 times_100000.txt");
+        
         auto start3 = chrono::high_resolution_clock::now();
         timSort(arr3);
         auto end3 = chrono::high_resolution_clock::now();
         
         chrono::duration<double> duration3 = end3 - start3;
         outFile3100000 << duration3.count() << endl;
-        outFile3100000.close();
+        
         
     }
+    outFile1100000.close();
+    outFile2100000.close();
+    outFile3100000.close();
 }
 
 //    cocktailShakerSort(arr1);
